@@ -7,6 +7,8 @@ const connectDB = require('./config/db')
 
 const colors = require('colors')
 
+const cors = require('cors');
+
 const PORT = process.env.PORT || 5000 
 // connect database
 connectDB()
@@ -15,8 +17,13 @@ const {errorHandler} =require('./middleware/errorMiddleware')
 const app = express()
         
 app.use(express.json())
-app.use(express.urlencoded({extended: false}))
+app.use(express.urlencoded({extended: true}))
 
+app.use(cors({
+    origin: 'https://supportdex.netlify.app', 
+    methods: 'GET,POST,PUT,DELETE',
+    credentials: true, 
+}));
 
 app.get('/', (req, res)=>{
      res.status(200).json({message: 'Welcome to Support Desk API'}) 
