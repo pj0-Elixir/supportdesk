@@ -5,7 +5,7 @@ const dotenv = require('dotenv').config()
 
 const connectDB = require('./config/db')
 
-const colors = require('colors')
+const colors = require('colors') 
 
 const cors = require('cors');
 
@@ -30,7 +30,7 @@ app.get('/', (req, res)=>{
 })
 
 // Routes
-app.use('/api/users/', require('./routes/userRoutes'))
+app.use('/api/users', require('./routes/userRoutes'))
 app.use('/api/tickets/', require('./routes/ticketRoutes'))
 
 app.use(errorHandler)
