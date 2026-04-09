@@ -31,7 +31,7 @@ const user = await User.create({
     email,
     password: hashedPassword
 })
-if (user) {
+if (user) { 
     res.status(201).json({
         _id: user._id,
         name: user.name,
@@ -40,7 +40,7 @@ if (user) {
     })
 }else{
     res.status(400)
-     throw new error('invalid user data')
+     throw new Error('invalid user data')
 }
  
 
