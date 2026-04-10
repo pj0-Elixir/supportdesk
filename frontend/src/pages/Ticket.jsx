@@ -4,8 +4,8 @@ import Modal from "react-modal";
 import { FaPlus } from "react-icons/fa";
 import { toast } from "react-toastify";
 import { useSelector, useDispatch } from "react-redux";
-import { getTicket, reset, closeTicket } from "../features/ticket/TicketSlice";
-import { getNotes, createNote, reset as noteReset } from "../features/note/noteSlice";
+import { getTicket, closeTicket } from "../features/ticket/TicketSlice";
+import { getNotes, createNote} from "../features/note/noteSlice";
 import Spinner from "./components/Spinner";
 import NoteItem from "./components/NoteItem";
 import BackButton from "./components/BackButton";
@@ -27,7 +27,7 @@ Modal.setAppElement("#root");
 const Ticket = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [noteText, setNoteText] = useState("");
-  const { ticket, isLoading, isSuccess, isError, message } = useSelector(
+  const { ticket, isLoading, isError, message } = useSelector(
     (state) => state.tickets
   );
   const { notes, isLoading: notesIsLoading } = useSelector(
@@ -35,7 +35,6 @@ const Ticket = () => {
   );
 
   const dispatch = useDispatch();
-  const params = useParams();
   const { ticketId } = useParams();
   const navigate = useNavigate();
 
@@ -47,7 +46,7 @@ const Ticket = () => {
     dispatch(getNotes(ticketId));
 
     // esling-disable-next-line
-  }, [isError, ticketId, message]);
+  }, [dispatch, isError, ticketId, message]);
 
   const onTicketClose = () => {
     dispatch(closeTicket(ticketId));

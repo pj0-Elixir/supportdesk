@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import Spinner from "./components/Spinner";
-import { toast } from "react-toastify";
 import { getTickets, reset } from "../features/ticket/TicketSlice";
 import BackButton from "./components/BackButton";
 import TicketItem from "./components/TicketItem";
