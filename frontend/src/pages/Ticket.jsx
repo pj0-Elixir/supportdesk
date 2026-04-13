@@ -139,9 +139,10 @@ const Ticket = () => {
           </div>
         </form>
       </Modal>
-      {notes.map((note) => (
-        <NoteItem key={note._id} note={note} />
-      ))}
+      {Array.isArray(notes) &&
+  notes.map((note) => (
+    <NoteItem key={note._id} note={note} />
+  ))}
     </div>
   );
 };
